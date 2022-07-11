@@ -5,19 +5,8 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Hello, World</title>
+    <title>旅行计划</title>
     <style type="text/css">
-        html {
-            height: 100%;
-           
-        }
-
-        body {
-            height: 100%;
-            margin: 0px;
-            padding: 0px;
-        }
-
         .map {
             height: 300px;
             width: 85%;
@@ -44,62 +33,117 @@
 </head>
 
 <body>
-    <div class="container" style="height: 100%;background-color: #f8fcff;">
+    <div class="container-fluid" style="background-color: #e1ecf5;">
         <div class="row">
             <div class="col-md-12" style="text-align: center;">
-                <h1>迎迎和小王的旅行计划</h1>
-
+                <h1>迎迎和小王的旅行计划<span style="color: red;">❤</span><br><span id="plan-index">方案一</span></h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <h2>方案一</h2>
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-info" onclick="plan(1,2)">方案一</button>
+                    <button type="button" class="btn btn-info" onclick="plan(2,1)">方案二</button>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <h3>第一天</h3>
+        <div id="plan1" style="display: block;">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>第一天</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>1️⃣上午从酒店出发，走路大概20分钟左右，去附近的万达广场，可以看一场喜欢的电影~顺便再吃个午饭，选了一个江浙菜，西湖印象🍝
+                        <button type="button" class="btn btn-primary btn-xs" onclick="addPath1()">👉戳我看路线</button>
+                    </p>
+                    <div id="map1" class="map"></div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>2️⃣吃饱喝足之后从万达出发，前往星海公园。星海公园临近海边，走一圈大概半个小时到一个小时🚶‍♂️，圣亚海洋馆和极地馆也在附近，有兴趣的话可以进去逛逛，美团门票235。星海公园里边还可以做快艇出海🚤，私人的项目，价格100+，可讲价。
+                        整个下午时间都在星海公园啦🎈。晚上去星海广场附近的一个西餐厅🥩~
+                        <button type="button" class="btn btn-primary btn-xs" onclick="addPath2()">👉戳我看路线</button>
+                    </p>
+                    <div id="map2" class="map"></div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>3️⃣吃过晚饭之后，就留在星海广场（PS：星海公园和星海广场是两个地方，但是在一起~），随便逛逛，看看大连建市百年纪念城雕，如果能赶上的话，可以看到星海广场的音乐喷泉。累了就可以回酒店休息啦
+                        <button type="button" class="btn btn-primary btn-xs" onclick="addPath3()">👉戳我看路线</button>
+                    </p>
+                    <div id="map3" class="map"></div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>第二天</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>4️⃣第二天就比较轻松啦，早上可以睡到自然醒，然后可以一起去买个菜，中午在家做一顿好吃的饭菜🍚，剩余时间就可以随意啦，下午做地铁前往大连北站
+                        <button type="button" class="btn btn-primary btn-xs" onclick="addPath4()">👉戳我看路线</button>
+                    </p>
+                    <div id="map4" class="map"></div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <p>1️⃣上午从酒店出发，走路大概20分钟左右，去附近的万达广场，可以看一场喜欢的电影~顺便再吃个午饭，选了一个江浙菜，西湖印象🍝
-                    <button type="button" class="btn btn-primary btn-xs" onclick="addPath1()">👉戳我看路线</button>
-                </p>
-                <div id="map1" class="map"></div>
+        <div id="plan2" style="display: none;">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>第一天</h3>
+                </div>
             </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-12">
-                <p>2️⃣吃饱喝足之后从万达出发，前往星海公园。星海公园临近海边，走一圈大概半个小时到一个小时🚶‍♂️，圣亚海洋馆和极地馆也在附近，有兴趣的话可以进去逛逛，美团门票235。星海公园里边还可以做快艇出海🚤，私人的项目，价格100+，可讲价。
-                    整个下午时间都在星海公园啦🎈。晚上去星海广场附近的一个西餐厅🥩~
-                    <button type="button" class="btn btn-primary btn-xs" onclick="addPath2()">👉戳我看路线</button>
-                </p>
-                <div id="map2" class="map"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>1️⃣上午从酒店出发，乘坐地铁去海之韵公园，公园在大连最东边，地铁需要一个小时左右，海之韵公园依山傍海，整个一天都可以在这里🚶‍♂️，最后的终点是棒棰岛海滩~出发之前要准备好干粮🍱
+                        <button type="button" class="btn btn-primary btn-xs" onclick="addPath5()">👉戳我看路线</button>
+                    </p>
+                    <div id="map5" class="map"></div>
+                    <p>徒步路线如下
+                        <button type="button" class="btn btn-primary btn-xs" onclick="addPath6()">👉戳我看路线</button>
+                    </p>
+                    <div id="map6" class="map"></div>
+                </div>
             </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-12">
-                <p>3️⃣吃过晚饭之后，就留在星海广场（PS：星海公园和星海广场是两个地方，但是在一起~），随便逛逛，看看大连建市百年纪念城雕，如果能赶上的话，可以看到星海广场的音乐喷泉。累了就可以回酒店休息啦
-                    <button type="button" class="btn btn-primary btn-xs" onclick="addPath3()">👉戳我看路线</button>
-                </p>
-                <div id="map3" class="map"></div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>2️⃣走了一天会很累，就不做其他安排啦，玩够了之后打车回家（唯一不可控的就是从这里打车可能不太好打，然后公交站又比较远...），路上顺便买点菜回家做饭🍚，或者找个其他吃饭的地方。
+                        <button type="button" class="btn btn-primary btn-xs" onclick="addPath7()">👉戳我看路线</button>
+                    </p>
+                    <div id="map7" class="map"></div>
+                </div>
             </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-12">
-                <h3>第二天</h3>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>3️⃣吃过晚饭之后可以选择回家躺着歇息😴，或者还有精力的话可以选择吃完饭散个步，目标是七贤岭森林公园🚶‍♂️，路程20分钟左右~
+                        <button type="button" class="btn btn-primary btn-xs" onclick="addPath8()">👉戳我看路线</button>
+                    </p>
+                    <div id="map8" class="map"></div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <p>4️⃣第二天就比较轻松啦，早上可以睡到自然醒，然后可以一起去买个菜，中午在家做一顿好吃的饭菜🍚，剩余时间就可以随意啦，下午做地铁前往大连北站
-                    <button type="button" class="btn btn-primary btn-xs" onclick="addPath4()">👉戳我看路线</button>
-                </p>
-                <div id="map4" class="map"></div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>第二天</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>4️⃣相对于方案一，方案二的消耗比较大，第二天就不做其他安排了，早上可以睡到自然醒，然后可以选择在家做饭，或者出去吃，下午做地铁前往大连北站
+                        <button type="button" class="btn btn-primary btn-xs" onclick="addPath9()">👉戳我看路线</button>
+                    </p>
+                    <div id="map9" class="map"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -111,6 +155,10 @@
         const luxiao = new BMapGL.Point(121.59923018828823, 38.882241261052044)
         const xinghaiguangchang = new BMapGL.Point(121.59445092666772, 38.88805984285457)
         const dalianbei = new BMapGL.Point(121.61451126102502, 39.022129687135866)
+
+        const haizhiyun = new BMapGL.Point(121.72308549815247, 38.91374985038151)
+        const bangchuidao = new BMapGL.Point(121.71807295160076, 38.89533023347322)
+        const qixianling = new BMapGL.Point(121.53628053673786, 38.85609835709698)
 
 
         var map1 = new BMapGL.Map("map1");
@@ -125,6 +173,22 @@
         var map4 = new BMapGL.Map("map4");
         map4.centerAndZoom(zhimajie, 17);
         map4.enableScrollWheelZoom(true);
+
+        var map5 = new BMapGL.Map("map5");
+        map5.centerAndZoom(zhimajie, 17);
+        map5.enableScrollWheelZoom(true);
+        var map6 = new BMapGL.Map("map6");
+        map6.centerAndZoom(haizhiyun, 17);
+        map6.enableScrollWheelZoom(true);
+        var map7 = new BMapGL.Map("map7");
+        map7.centerAndZoom(bangchuidao, 17);
+        map7.enableScrollWheelZoom(true);
+        var map8 = new BMapGL.Map("map8");
+        map8.centerAndZoom(zhimajie, 17);
+        map8.enableScrollWheelZoom(true);
+        var map9 = new BMapGL.Map("map9");
+        map9.centerAndZoom(zhimajie, 17);
+        map9.enableScrollWheelZoom(true);
 
         map1.addEventListener('click', function (e) {
             console.log(`${e.latlng.lng},${e.latlng.lat}`);
@@ -151,6 +215,32 @@
         function addPath4() {
             var transit = new BMapGL.TransitRoute(map4, { renderOptions: { map: map4 }, });
             transit.search(zhimajie, dalianbei);
+        }
+        function addPath5() {
+            var transit = new BMapGL.TransitRoute(map5, { renderOptions: { map: map5 }, });
+            transit.search(zhimajie, haizhiyun);
+        }
+        function addPath6() {
+            var walking = new BMapGL.WalkingRoute(map6, { renderOptions: { map: map6, autoViewport: true } });
+            walking.search(haizhiyun, bangchuidao);
+        }
+        function addPath7() {
+            var driving = new BMapGL.DrivingRoute(map7, { renderOptions: { map: map7, autoViewport: true } });
+            driving.search(bangchuidao, zhimajie);
+        }
+        function addPath8() {
+            var walking = new BMapGL.WalkingRoute(map8, { renderOptions: { map: map8, autoViewport: true } });
+            walking.search(zhimajie, qixianling);
+        }
+        function addPath9() {
+            var transit = new BMapGL.TransitRoute(map9, { renderOptions: { map: map9 }, });
+            transit.search(zhimajie, dalianbei);
+        }
+
+        function plan(show, hide) {
+            document.getElementById("plan" + show).style.display = "block"
+            document.getElementById("plan" + hide).style.display = "none"
+            document.getElementById("plan-index").innerHTML = show == 1 ? "方案一" : "方案二"
         }
 
     </script>
