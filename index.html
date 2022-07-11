@@ -42,7 +42,7 @@
     <div class="container-fluid" style="background-color: #e1ecf5;">
         <div class="row">
             <div class="col-md-12" style="text-align: center;">
-                <h1>迎迎和小王的旅行计划1.5<span style="color: red;">❤</span><br><span id="plan-index">方案一</span></h1>
+                <h1>迎迎和小王的旅行计划1.4<span style="color: red;">❤</span><br><span id="plan-index">方案一</span></h1>
             </div>
         </div>
         <div class="row">
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div id="plan1" style="display: contents;">
+        <div id="plan1" style="display: block;">
             <div class="row">
                 <div class="col-md-12">
                     <h3>第一天</h3>
@@ -166,48 +166,29 @@
         const bangchuidao = new BMapGL.Point(121.71807295160076, 38.89533023347322)
         const qixianling = new BMapGL.Point(121.53628053673786, 38.85609835709698)
 
-
-        var map1 = new BMapGL.Map("map1");
-        map1.centerAndZoom(zhimajie, 17);
-        map1.enableScrollWheelZoom(true);
-        var map2 = new BMapGL.Map("map2");
-        map2.centerAndZoom(xinghaigongyuan, 17);
-        map2.enableScrollWheelZoom(true);
-        var map3 = new BMapGL.Map("map3");
-        map3.centerAndZoom(xinghaigongyuan, 17);
-        map3.enableScrollWheelZoom(true);
-        var map4 = new BMapGL.Map("map4");
-        map4.centerAndZoom(zhimajie, 17);
-        map4.enableScrollWheelZoom(true);
-
-        var map5 = new BMapGL.Map("map5");
-        map5.centerAndZoom(zhimajie, 17);
-        map5.enableScrollWheelZoom(true);
-        var map6 = new BMapGL.Map("map6");
-        map6.centerAndZoom(haizhiyun, 17);
-        map6.enableScrollWheelZoom(true);
-        var map7 = new BMapGL.Map("map7");
-        map7.centerAndZoom(bangchuidao, 17);
-        map7.enableScrollWheelZoom(true);
-        var map8 = new BMapGL.Map("map8");
-        map8.centerAndZoom(zhimajie, 17);
-        map8.enableScrollWheelZoom(true);
-        var map9 = new BMapGL.Map("map9");
-        map9.centerAndZoom(zhimajie, 17);
-        map9.enableScrollWheelZoom(true);
-
-        map1.addEventListener('click', function (e) {
-            console.log(`${e.latlng.lng},${e.latlng.lat}`);
-        });
+        var map1;
+        var map2;
+        var map3;
+        var map4;
+        var map5;
+        var map6;
+        var map7;
+        var map8;
+        var map9;
 
         function addPath1() {
-            // var driving = new BMapGL.DrivingRoute(map, { renderOptions: { map: map, autoViewport: true } });
-            // driving.search(zhimajie, wanda);
+            map1 = new BMapGL.Map("map1");
+            map1.centerAndZoom(zhimajie, 17);
+            map1.enableScrollWheelZoom(true);
             var walking = new BMapGL.WalkingRoute(map1, { renderOptions: { map: map1, autoViewport: true } });
             walking.search(zhimajie, wanda);
         }
 
         function addPath2() {
+            map2 = new BMapGL.Map("map2");
+            map2.centerAndZoom(xinghaigongyuan, 17);
+            map2.enableScrollWheelZoom(true);
+
             var driving = new BMapGL.DrivingRoute(map2, { renderOptions: { map: map2, autoViewport: true } });
             driving.search(wanda, xinghaigongyuan);
             var walking = new BMapGL.WalkingRoute(map2, { renderOptions: { map: map2, autoViewport: true } });
@@ -215,38 +196,76 @@
         }
 
         function addPath3() {
+            map3 = new BMapGL.Map("map3");
+            map3.centerAndZoom(xinghaigongyuan, 17);
+            map3.enableScrollWheelZoom(true);
+
             var driving = new BMapGL.DrivingRoute(map3, { renderOptions: { map: map3, autoViewport: true } });
             driving.search(xinghaiguangchang, zhimajie);
         }
         function addPath4() {
+            map4 = new BMapGL.Map("map4");
+            map4.centerAndZoom(zhimajie, 17);
+            map4.enableScrollWheelZoom(true);
+
             var transit = new BMapGL.TransitRoute(map4, { renderOptions: { map: map4 }, });
             transit.search(zhimajie, dalianbei);
         }
         function addPath5() {
+            map5 = new BMapGL.Map("map5");
+            map5.centerAndZoom(zhimajie, 17);
+            map5.enableScrollWheelZoom(true);
             var transit = new BMapGL.TransitRoute(map5, { renderOptions: { map: map5 }, });
             transit.search(zhimajie, haizhiyun);
         }
         function addPath6() {
+            map6 = new BMapGL.Map("map6");
+            map6.centerAndZoom(haizhiyun, 17);
+            map6.enableScrollWheelZoom(true);
             var walking = new BMapGL.WalkingRoute(map6, { renderOptions: { map: map6, autoViewport: true } });
             walking.search(haizhiyun, bangchuidao);
         }
         function addPath7() {
+            map7 = new BMapGL.Map("map7");
+            map7.centerAndZoom(bangchuidao, 17);
+            map7.enableScrollWheelZoom(true);
             var driving = new BMapGL.DrivingRoute(map7, { renderOptions: { map: map7, autoViewport: true } });
             driving.search(bangchuidao, zhimajie);
         }
         function addPath8() {
+            map8 = new BMapGL.Map("map8");
+            map8.centerAndZoom(zhimajie, 17);
+            map8.enableScrollWheelZoom(true);
             var walking = new BMapGL.WalkingRoute(map8, { renderOptions: { map: map8, autoViewport: true } });
             walking.search(zhimajie, qixianling);
         }
         function addPath9() {
+            map9 = new BMapGL.Map("map9");
+            map9.centerAndZoom(zhimajie, 17);
+            map9.enableScrollWheelZoom(true);
             var transit = new BMapGL.TransitRoute(map9, { renderOptions: { map: map9 }, });
             transit.search(zhimajie, dalianbei);
         }
 
         function plan(show, hide) {
-            document.getElementById("plan" + show).style.display = "contents"
+            document.getElementById("plan" + show).style.display = "block"
             document.getElementById("plan" + hide).style.display = "none"
-            document.getElementById("plan-index").innerHTML = show == 1 ? "方案一" : "方案二"
+
+            if (show == 1) {
+                document.getElementById("plan-index").innerHTML = "方案一"
+                map1.destroy()
+                map2.destroy()
+                map3.destroy()
+                map4.destroy()
+
+            } else {
+                document.getElementById("plan-index").innerHTML = "方案二"
+                map5.destroy()
+                map6.destroy()
+                map7.destroy()
+                map8.destroy()
+                map9.destroy()
+            }
         }
 
     </script>
