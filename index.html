@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Hello, World</title>
+    <style type="text/css">
+        html {
+            height: 100%;
+           
+        }
+
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .map {
+            height: 300px;
+            width: 85%;
+        }
+    </style>
+    <!-- 百度MAP -->
+    <script type="text/javascript"
+        src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=rzpyP4kTUHLzc5WSPg6zhaL7ejag5v6i">
+        </script>
+
+    <!-- Bootstrap -->
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container" style="height: 100%;background-color: #f8fcff;">
+        <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+                <h1>迎迎和小王的旅行计划</h1>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>方案一</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>第一天</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>1️⃣上午从酒店出发，走路大概20分钟左右，去附近的万达广场，可以看一场喜欢的电影~顺便再吃个午饭，选了一个江浙菜，西湖印象🍝
+                    <button type="button" class="btn btn-primary btn-xs" onclick="addPath1()">👉戳我看路线</button>
+                </p>
+                <div id="map1" class="map"></div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <p>2️⃣吃饱喝足之后从万达出发，前往星海公园。星海公园临近海边，走一圈大概半个小时到一个小时🚶‍♂️，圣亚海洋馆和极地馆也在附近，有兴趣的话可以进去逛逛，美团门票235。星海公园里边还可以做快艇出海🚤，私人的项目，价格100+，可讲价。
+                    整个下午时间都在星海公园啦🎈。晚上去星海广场附近的一个西餐厅🥩~
+                    <button type="button" class="btn btn-primary btn-xs" onclick="addPath2()">👉戳我看路线</button>
+                </p>
+                <div id="map2" class="map"></div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <p>3️⃣吃过晚饭之后，就留在星海广场（PS：星海公园和星海广场是两个地方，但是在一起~），随便逛逛，看看大连建市百年纪念城雕，如果能赶上的话，可以看到星海广场的音乐喷泉。累了就可以回酒店休息啦
+                    <button type="button" class="btn btn-primary btn-xs" onclick="addPath3()">👉戳我看路线</button>
+                </p>
+                <div id="map3" class="map"></div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>第二天</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>4️⃣第二天就比较轻松啦，早上可以睡到自然醒，然后可以一起去买个菜，中午在家做一顿好吃的饭菜🍚，剩余时间就可以随意啦，下午做地铁前往大连北站
+                    <button type="button" class="btn btn-primary btn-xs" onclick="addPath4()">👉戳我看路线</button>
+                </p>
+                <div id="map4" class="map"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        const zhimajie = new BMapGL.Point(121.52956500268093, 38.865723116540664)
+        const wanda = new BMapGL.Point(121.53849283978896, 38.86878228794217)
+        const xinghaigongyuan = new BMapGL.Point(121.5702434486392, 38.88363127378492)
+        const luxiao = new BMapGL.Point(121.59923018828823, 38.882241261052044)
+        const xinghaiguangchang = new BMapGL.Point(121.59445092666772, 38.88805984285457)
+        const dalianbei = new BMapGL.Point(121.61451126102502, 39.022129687135866)
+
+
+        var map1 = new BMapGL.Map("map1");
+        map1.centerAndZoom(zhimajie, 17);
+        map1.enableScrollWheelZoom(true);
+        var map2 = new BMapGL.Map("map2");
+        map2.centerAndZoom(xinghaigongyuan, 17);
+        map2.enableScrollWheelZoom(true);
+        var map3 = new BMapGL.Map("map3");
+        map3.centerAndZoom(xinghaigongyuan, 17);
+        map3.enableScrollWheelZoom(true);
+        var map4 = new BMapGL.Map("map4");
+        map4.centerAndZoom(zhimajie, 17);
+        map4.enableScrollWheelZoom(true);
+
+        map1.addEventListener('click', function (e) {
+            console.log(`${e.latlng.lng},${e.latlng.lat}`);
+        });
+
+        function addPath1() {
+            // var driving = new BMapGL.DrivingRoute(map, { renderOptions: { map: map, autoViewport: true } });
+            // driving.search(zhimajie, wanda);
+            var walking = new BMapGL.WalkingRoute(map1, { renderOptions: { map: map1, autoViewport: true } });
+            walking.search(zhimajie, wanda);
+        }
+
+        function addPath2() {
+            var driving = new BMapGL.DrivingRoute(map2, { renderOptions: { map: map2, autoViewport: true } });
+            driving.search(wanda, xinghaigongyuan);
+            var walking = new BMapGL.WalkingRoute(map2, { renderOptions: { map: map2, autoViewport: true } });
+            walking.search(xinghaigongyuan, luxiao);
+        }
+
+        function addPath3() {
+            var driving = new BMapGL.DrivingRoute(map3, { renderOptions: { map: map3, autoViewport: true } });
+            driving.search(xinghaiguangchang, zhimajie);
+        }
+        function addPath4() {
+            var transit = new BMapGL.TransitRoute(map4, { renderOptions: { map: map4 }, });
+            transit.search(zhimajie, dalianbei);
+        }
+
+    </script>
+</body>
+
+</html>
